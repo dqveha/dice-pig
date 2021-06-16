@@ -9,6 +9,18 @@
 //   };
 // }
 
+function Rounds(round) {
+  this.round = round
+}
+
+// Per player
+//   round = {
+//     round1 = 
+//     round2 = 
+//   }
+
+
+
 function Player1(playerName, player1Counter) {
   this.playerName = playerName,
   this.player1Counter = player1Counter
@@ -23,9 +35,20 @@ Player1.prototype.rollDice = function() {
 }
 
 Player1.prototype.addDiceCount = function() {
-  this.player1Counter += this.rollDice();
-  return this.player1Counter;
+  if (this.rollDice !== 1) {
+    this.player1Counter.push(this.rollDice());
+    console.log(this.player1Counter);
+    return this.player1Counter;
+  }
+  else {
+    this.player1Counter = [];
+    return this.player1Counter;
+  }
 }
+
+// if roll > 1; array = [] then pushes number into array; 
+// if hold then add all numbers together in array, parseInt it, then add to counter;
+// if roll = 1; array = [] (empty);
 
 function Player2(playerName, player2Counter) {
   this.playerName = playerName,

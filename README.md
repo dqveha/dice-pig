@@ -20,3 +20,11 @@ Player# {playerName: "pliers", player#Counter: 3
 Player# {playerName: "pliers", player#Counter: 7}
 
 NOTE: '#' is the respective player (e.g, Player1, Player2)
+
+Describe: Player#.prototype.addDiceCount()
+
+Test: "It will push the dice rolls into an array"
+Code:player#.addDiceCount
+Expected Result:
+Player# {playerName: "pliers", player#Counter: [3,1,2,3]}
+NOTE: '#' is the respective player (e.g, Player1, Player2)
