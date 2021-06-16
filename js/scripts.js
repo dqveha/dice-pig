@@ -14,15 +14,37 @@ function Player1(playerName, player1Counter) {
   this.player1Counter = player1Counter
 }
 
-
-function rollDice(min, max) {
+Player1.prototype.rollDice = function() {
   let counter = 0;
-  min = Math.ceil(min);
-  max = Math.floor(max);
+  min = Math.ceil(1);
+  max = Math.floor(6);
   counter = Math.floor(Math.random() * (max - min + 1) + min);
-  console.log(counter)
-  //return counter
+  return counter
 }
+
+Player1.prototype.addDiceCount = function() {
+  this.player1Counter += this.rollDice();
+  return this.player1Counter;
+}
+
+function Player2(playerName, player2Counter) {
+  this.playerName = playerName,
+  this.player2Counter = player2Counter
+}
+
+Player2.prototype.rollDice = function() {
+  let counter = 0;
+  min = Math.ceil(1);
+  max = Math.floor(6);
+  counter = Math.floor(Math.random() * (max - min + 1) + min);
+  return counter
+}
+
+Player2.prototype.addDiceCount = function() {
+  this.player2Counter += this.rollDice();
+  return this.player2Counter;
+}
+
 
 $(document).ready(function() {
   

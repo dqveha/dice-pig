@@ -4,9 +4,19 @@ Test: "It will generate a random number between 1-6"
 Code: rollDice();
 Expected Result: Random number between 1-6
 
-Describe: Player1(name, counter)
+Describe: Player#(name, counter)
 
-Test: "It will create a Player1 object with name and counter."
-Code: Player1("Pliers", 0)
+Test: "It will create a Player# object with name and counter."
+Code: Player#("Pliers", 0)
 Expected Result:
-Player1 {playerName: "pliers", player1Counter: 0}
+Player# {playerName: "pliers", player#Counter: 0}
+
+Describe: Player#.prototype.addDiceCount()
+
+Test: "It will add the dice rolls"
+Code:player#.addDiceCount
+Expected Result:
+Player# {playerName: "pliers", player#Counter: 3
+Player# {playerName: "pliers", player#Counter: 7}
+
+NOTE: '#' is the respective player (e.g, Player1, Player2)
