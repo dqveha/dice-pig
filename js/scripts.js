@@ -25,6 +25,14 @@ Player1.prototype.addDiceCount = function() {
     case (1):
         this.player1TurnCount = 0;
         this.player1DiceRoll = 1;    
+        player1.hold();
+        $("#roll-1").hide();
+        $("#hold-1").hide();
+        $("#hold-2").show();
+        $("#roll-2").show();
+        $("#roll1").hide();
+        $("#roll2").show();
+
         console.log(this.player1TurnCount);
         break;
     case (2):
@@ -50,17 +58,18 @@ Player1.prototype.addDiceCount = function() {
     }
   }
 
+function Player2() {
+  this.player2TotalCount = 0,
+  this.player2TurnCount = 0
+  this.player2DiceRoll = 0
+}
+
 Player2.prototype.hold = function() {
   if (this.hold) {
   this.player2TotalCount += this.player2TurnCount;
   this.player2TurnCount = 0;
   console.log(this.player2TotalCount);
   }
-}
-function Player2() {
-  this.player2TotalCount = 0,
-  this.player2TurnCount = 0
-  this.player2DiceRoll = 0
 }
 
 Player2.prototype.rollDice = function() {
@@ -75,7 +84,14 @@ Player2.prototype.addDiceCount = function() {
   switch (this.rollDice()) {
     case (1):
       this.player2TurnCount = 0;
-      this.player2DiceRoll = 1    
+      this.player2DiceRoll = 1  
+      player2.hold();
+        $("#roll-2").hide();
+        $("#hold-2").hide();
+        $("#hold-1").show();
+        $("#roll-1").show(); 
+        $("#roll2").hide(); 
+        $("#roll1").show();
       console.log(this.player2TurnCount);
       break;
     case (2):
@@ -109,23 +125,40 @@ $(document).ready(function() {
   
   $("button#roll-1").click(function() {
     this.player1DiceRoll = player1.addDiceCount();
-    console.log(player1.player1TurnCount);
     $("#turn-total-1").html(player1.player1TurnCount);
     $("#current-roll-1").html(player1.player1DiceRoll);
   });
 
+
+
   $("button#hold-1").click(function() {
     player1.hold();
     $("#score-total-1").html(player1.player1TotalCount);
-    $("#roll-1").hide() //show #roll-2
+    $("#roll-1").hide();
+    $("#hold-1").hide();
+    $("#roll-2").show();
+    $("#hold-2").show();
+    $("#roll1").hide();
+    $("#roll2").show();
+    
   })
   
   $("button#roll-2").click(function() {
     this.player2DiceRoll = player2.addDiceCount();
-    console.log(player2.player2TurnCount);
     $("#turn-total-2").html(player2.player2TurnCount);
     $("#current-roll-2").html(player2.player2DiceRoll);
   });
+  
+  $("button#hold-2").click(function() {
+    player2.hold();
+    $("#score-total-2").html(player2.player2TotalCount);
+    $("#roll-2").hide();
+    $("#hold-2").hide();
+    $("#roll-1").show();
+    $("#hold-1").show();
+    $("#roll2").hide(); 
+    $("#roll1").show();
+  })
 });
 
 // disabling button: document.getElementById("myBtn").disabled = true; 

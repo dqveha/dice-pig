@@ -2,11 +2,8 @@
   text-align: center;
 }
 
-#roll1,
 #roll2,
-#roll3,
-#roll4,
-#roll5,
-#roll6 {
+#roll-2,
+#hold-2 {
   display: none;
 }
