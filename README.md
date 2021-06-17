@@ -1,3 +1,15 @@
+# Dice Pig! (Aka Pig Dice, The Game)
+
+#### Contributers: Kristen Hopper <hopperdavis@gmail.com>, Brad Prettyman <brad.prettyman5@gmail.com>, Kevin Funez <kevin.funez315@gmail.com>, Ben Dunham <bendunhampdx@gmail.com>, Dave Lindqvist <lindqvist.dave@gmail.com>
+
+## Description:
+
+This is a game created using HTML, CSS, jQuery/Javascript. Purpose of the game is to get to 100 points. If a player rolls a 1, then their turn-score is reset and it becomes the next player's turn.
+
+Have fun!
+
+#
+
 Describe: rollDice();
 
 Test: "It will generate a random number between 1-6"
@@ -28,4 +40,3 @@ Code:player#.addDiceCount
 Expected Result:
 Player# {playerName: "pliers", player#Counter: [3,1,2,3]}
 NOTE: '#' is the respective player (e.g, Player1, Player2)
-

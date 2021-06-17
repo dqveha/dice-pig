@@ -4,6 +4,12 @@ function Player1() {
   this.player1DiceRoll = 0
 }
 
+Player1.prototype.newGame = function() {
+  this.player1TotalCount = 0,
+  this.player1TurnCount = 0,
+  this.player1DiceRoll = 0
+}
+
 Player1.prototype.hold = function() {
   if (this.hold) {
   this.player1TotalCount += this.player1TurnCount;
@@ -23,18 +29,17 @@ Player1.prototype.rollDice = function() {
 Player1.prototype.addDiceCount = function() {
   switch (this.rollDice()) {
     case (1):
-        this.player1TurnCount = 0;
-        this.player1DiceRoll = 1;    
-        player1.hold();
-        $("#roll-1").hide();
-        $("#hold-1").hide();
-        $("#hold-2").show();
-        $("#roll-2").show();
-        $("#roll1").hide();
-        $("#roll2").show();
-
-        console.log(this.player1TurnCount);
-        break;
+      this.player1TurnCount = 0;
+      this.player1DiceRoll = 1;    
+      player1.hold();
+      $("#roll-1").hide();
+      $("#hold-1").hide();
+      $("#hold-2").show();
+      $("#roll-2").show();
+      $("#roll1").hide();
+      $("#roll2").show();
+      console.log(this.player1TurnCount);
+      break;
     case (2):
       this.player1TurnCount += 2;
       this.player1DiceRoll = 2
@@ -61,6 +66,12 @@ Player1.prototype.addDiceCount = function() {
 function Player2() {
   this.player2TotalCount = 0,
   this.player2TurnCount = 0
+  this.player2DiceRoll = 0
+}
+
+Player2.prototype.newGame = function() {
+  this.player2TotalCount = 0,
+  this.player2TurnCount = 0,
   this.player2DiceRoll = 0
 }
 
@@ -127,9 +138,11 @@ $(document).ready(function() {
     this.player1DiceRoll = player1.addDiceCount();
     $("#turn-total-1").html(player1.player1TurnCount);
     $("#current-roll-1").html(player1.player1DiceRoll);
+    if ((player1.player1TotalCount + player1.player1TurnCount) >= 100) {
+      alert("Player 1 wins!")
+      player1.newGame();
+      player2.newGame();};
   });
-
-
 
   $("button#hold-1").click(function() {
     player1.hold();
@@ -140,13 +153,16 @@ $(document).ready(function() {
     $("#hold-2").show();
     $("#roll1").hide();
     $("#roll2").show();
-    
   })
   
   $("button#roll-2").click(function() {
     this.player2DiceRoll = player2.addDiceCount();
     $("#turn-total-2").html(player2.player2TurnCount);
     $("#current-roll-2").html(player2.player2DiceRoll);
+    if ((player2.player1TotalCount + player2.player1TurnCount) >= 100) {
+      alert("Player 2 wins!")
+      player1.newGame();
+      player2.newGame();};
   });
   
   $("button#hold-2").click(function() {
