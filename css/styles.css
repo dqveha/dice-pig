@@ -1,0 +1,12 @@
+.container h1 {
+  text-align: center;
+}
+
+#roll1,
+#roll2,
+#roll3,
+#roll4,
+#roll5,
+#roll6 {
+  display: none;
+}
